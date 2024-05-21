@@ -1,0 +1,11 @@
+07lesson
+			pixel ratio
+a pixel ratio of two means 4 times more pixels to render
+a pixel ratio of three means 9 times more pixels to render
+highestpixel ratio are usually on the weakest devices -mobiles
+to get the pixel ratio we can use window.devicePixelRatio
+to update the reder accordongly we can use : render.setPixelRatio()
+			
+			Handlefullscreen
+
+
