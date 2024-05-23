@@ -28,7 +28,7 @@ scene.add(spaceMesh);
 
 // Saturn body
 // Saturn dimenstions:
-// Saturn's diametry: 120.536 km
+// Saturn's diameter: 120.536 km
 // Saturn's equatorial radius".: 60.268 km
 const texture = textureLoader.load('../textures/8k_saturn.jpg');
 const saturnRadius = 0.60268; // Saturn radius scaled 
@@ -40,7 +40,7 @@ scene.add(mesh);
 // Saturn rings *****************************************************
 // Constants for Ring Geometry
 // Rings sizes aprox:
-// Ring's total diametry: 275.000 km
+// Ring's total diameter: 275.000 km
 // Ring's outer radius: 137.500 km
 // Ring's inner radius: 127.500 km
 const ringInnerRadius = 1.27500;
@@ -167,7 +167,7 @@ const radiansPerSecond = (2 * Math.PI) / (saturnRotationPeriod * secondsPerHour)
 const tick = () =>
 {    
     // spacebackground rotation
-    // spaceMesh.rotation.y += 0.0002;
+    // spaceMesh.rotation.y += 0.00002;
 
     // saturn rotation
     const elapsedTime = clock.getElapsedTime()
