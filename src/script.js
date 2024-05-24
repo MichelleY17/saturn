@@ -214,7 +214,7 @@ const tick = () => {
   // Rings rotations*******************************
   ringParticles.rotation.x = saturnTilt;
   smallRingParticles.rotation.x = saturnTilt;
-  mainRing.rotation.x= saturnTilt;
+  mainRing.rotation.x= saturnTilt-43;
   // Rotations outer ring
 //   ringParticles.rotation.y += 0.0002;
   // Rotation inner ring
