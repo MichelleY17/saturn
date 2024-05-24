@@ -15,11 +15,11 @@ const scene = new THREE.Scene()
 const textureLoader = new THREE.TextureLoader();
 
 // Space Background
-// const spaceTexture = textureLoader.load("../texture/Space-PNG-Picture.png");
-const spaceGeometry = new THREE.SphereGeometry(80, 64, 64);
+const spaceGeometry = new THREE.SphereGeometry(500, 32, 16);
+const spaceTexture = textureLoader.load("../texture/Space-PNG-Picture.png");
 const spaceMaterial = new THREE.MeshBasicMaterial({
-    // map: spaceTexture,
-    color: 0xffffff,
+    map: spaceTexture,
+    // color: 0xffffff,
     side: THREE.BackSide,
     wireframe: true,
 });
