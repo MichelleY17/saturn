@@ -25,16 +25,28 @@ const spaceMaterial = new THREE.MeshBasicMaterial({
 const spaceMesh = new THREE.Mesh(spaceGeometry, spaceMaterial);
 scene.add(spaceMesh);
 
+
+
 // Saturn body
 // Saturn dimenstions:
 // Saturn's diameter: 120.536 km
 // Saturn's equatorial radius".: 60.268 km
-const texture = textureLoader.load("../textures/8k_saturn.jpg");
+const saturnTexture = textureLoader.load("../textures/8k_saturn.jpg");
+const bumptexture =textureLoader.load('../textures/minas_bump.jpg');
 const saturnRadius = 0.60268; // Saturn radius scaled
 const geometry = new THREE.IcosahedronGeometry(saturnRadius, 12);
-const material = new THREE.MeshBasicMaterial({ map: texture });
-const mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
+const material = new THREE.MeshStandardMaterial({
+     roughness:1, 
+     metalness:0,
+     map: saturnTexture ,
+     bumpMap: bumptexture,
+     bumpScale: 0.3,
+    });
+const saturnMesh = new THREE.Mesh(geometry, material);
+saturnMesh.receiveShadow= true;
+saturnMesh.castShadow= true;
+saturnMesh.layers.set(0);
+scene.add(saturnMesh);
 
 // Saturn rings *****************************************************
 // Constants for Ring Geometry
@@ -44,7 +56,7 @@ scene.add(mesh);
 // Ring's inner radius: 127.500 km
 const ringInnerRadius = 1.275;
 const ringOuterRadius = 1.375;
-const ringThickness = 0.08; //is my custom thickness
+const ringThickness = 0.02; //is my custom thickness
 
 // Saturn's particle outer ring
 const ringParticlesGeometry = new THREE.BufferGeometry();
@@ -69,7 +81,7 @@ ringParticlesGeometry.setAttribute(
   new THREE.BufferAttribute(positions, 3)
 );
 const ringParticlesMaterial = new THREE.PointsMaterial({
-  color: 0xffffff,
+  color:'#bfbfbf',
   size: 0.0001,
 });
 const ringParticles = new THREE.Points(
@@ -101,8 +113,9 @@ smallRingParticlesGeometry.setAttribute(
   new THREE.BufferAttribute(positionsSmallRing, 3)
 );
 const smallRingParticlesMaterial = new THREE.PointsMaterial({
-  color: 0xffffff,
+  color: '#e2d8ac',
   size: 0.0001,
+//   opacity: 1,
 }); // Same size as outer ring
 const smallRingParticles = new THREE.Points(
   smallRingParticlesGeometry,
@@ -132,7 +145,12 @@ window.addEventListener("dblclick", () => {
     document.exitFullscreen();
   }
 });
-
+// Saturn mesh ring
+const mainRingGeometry = new THREE.TorusGeometry( ringOuterRadius, 0.1, 2, 100 ); 
+const mainRingTexture= textureLoader.load('../textures/saturnringcolor.jpg')
+const mainRingMaterial = new THREE.MeshBasicMaterial( { map: mainRingTexture, } ); 
+const mainRing = new THREE.Mesh( mainRingGeometry, mainRingMaterial );
+ scene.add( mainRing );
 //ambient light
 const ambientlight = new THREE.AmbientLight(0xffffff, 0.2);
 scene.add(ambientlight);
@@ -143,8 +161,8 @@ pointLight.castShadow = true;
 pointLight.shadowCameraVisible = true;
 pointLight.shadowBias = 0.00001;
 pointLight.shadowDarkness = 0.3;
-pointLight.shadowMapWidth = 2048;
-pointLight.shadowMapHeight = 2048;
+pointLight.shadowMapWidth = 1048;
+pointLight.shadowMapHeight = 1048;
 pointLight.position.set(-50, 20, -60);
 scene.add(pointLight);
 
@@ -170,6 +188,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
   antialias: true,
 });
+
 renderer.setSize(sizes.width, sizes.height);
 
 /**
@@ -177,8 +196,8 @@ renderer.setSize(sizes.width, sizes.height);
  */
 const clock = new THREE.Clock();
 // Saturn tilt
-const saturnTilt = (-26.73 * Math.PI) / 180;
-mesh.rotation.x = saturnTilt;
+const saturnTilt = (26.73 * Math.PI) / 180;
+saturnMesh.rotation.x = saturnTilt;
 const saturnRotationPeriod = 10.4;
 const secondsPerHour = 3600;
 const radiansPerSecond =
@@ -186,19 +205,20 @@ const radiansPerSecond =
 
 const tick = () => {
   // spacebackground rotation
-  // spaceMesh.rotation.y += 0.00002;
+//   spaceMesh.rotation.y += 0.00002;
 
   // saturn rotation
   const elapsedTime = clock.getElapsedTime();
-  mesh.rotation.y += radiansPerSecond * elapsedTime;
+//   mesh.rotation.y += radiansPerSecond * elapsedTime;
 
   // Rings rotations*******************************
   ringParticles.rotation.x = saturnTilt;
   smallRingParticles.rotation.x = saturnTilt;
+  mainRing.rotation.x= saturnTilt;
   // Rotations outer ring
-  ringParticles.rotation.y += 0.0002;
+//   ringParticles.rotation.y += 0.0002;
   // Rotation inner ring
-  smallRingParticles.rotation.y += 0.0002;
+//   smallRingParticles.rotation.y += 0.0002;
 
   // Update controls
   controls.update();
