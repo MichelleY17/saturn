@@ -12,6 +12,9 @@ const scene = new THREE.Scene();
 
 // texture loader
 const textureLoader = new THREE.TextureLoader();
+const axesHelper = new THREE.AxesHelper(5);
+scene.add(axesHelper);
+
 
 // Space Background
 const spaceTexture = textureLoader.load("../textures/starmap_2020_4k.jpeg");
