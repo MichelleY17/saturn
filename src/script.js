@@ -25,24 +25,26 @@ const spaceMaterial = new THREE.MeshBasicMaterial({
 const spaceMesh = new THREE.Mesh(spaceGeometry, spaceMaterial);
 scene.add(spaceMesh);
 
+
+
 // Saturn body
 // Saturn dimenstions:
 // Saturn's diameter: 120.536 km
 // Saturn's equatorial radius".: 60.268 km
 const saturnTexture = textureLoader.load("../textures/8k_saturn.jpg");
-const bumptexture = textureLoader.load("../textures/minas_bump.jpg");
+const bumptexture =textureLoader.load('../textures/minas_bump.jpg');
 const saturnRadius = 0.60268; // Saturn radius scaled
 const geometry = new THREE.IcosahedronGeometry(saturnRadius, 12);
 const material = new THREE.MeshStandardMaterial({
-  roughness: 1,
-  metalness: 0,
-  map: saturnTexture,
-  bumpMap: bumptexture,
-  bumpScale: 0.3,
-});
+     roughness:1, 
+     metalness:0,
+     map: saturnTexture ,
+     bumpMap: bumptexture,
+     bumpScale: 0.3,
+    });
 const saturnMesh = new THREE.Mesh(geometry, material);
-saturnMesh.receiveShadow = true;
-saturnMesh.castShadow = true;
+saturnMesh.receiveShadow= true;
+saturnMesh.castShadow= true;
 saturnMesh.layers.set(0);
 scene.add(saturnMesh);
 
@@ -79,7 +81,7 @@ ringParticlesGeometry.setAttribute(
   new THREE.BufferAttribute(positions, 3)
 );
 const ringParticlesMaterial = new THREE.PointsMaterial({
-  color: "#bfbfbf",
+  color:'#bfbfbf',
   size: 0.0001,
 });
 const ringParticles = new THREE.Points(
@@ -111,9 +113,9 @@ smallRingParticlesGeometry.setAttribute(
   new THREE.BufferAttribute(positionsSmallRing, 3)
 );
 const smallRingParticlesMaterial = new THREE.PointsMaterial({
-  color: "#e2d8ac",
+  color: '#e2d8ac',
   size: 0.0001,
-  //   opacity: 1,
+//   opacity: 1,
 }); // Same size as outer ring
 const smallRingParticles = new THREE.Points(
   smallRingParticlesGeometry,
@@ -144,14 +146,13 @@ window.addEventListener("dblclick", () => {
   }
 });
 // Saturn mesh ring
-const mainRingGeometry = new THREE.TorusGeometry(ringOuterRadius, 0.1, 2, 100);
-
-const mainRingTexture = textureLoader.load("../textures/saturnringcolor.jpg");
-const mainRingMaterial = new THREE.MeshBasicMaterial({ map: mainRingTexture });
-const mainRing = new THREE.Mesh(mainRingGeometry, mainRingMaterial);
-scene.add(mainRing);
+const mainRingGeometry = new THREE.TorusGeometry( ringOuterRadius, 0.1, 2, 100 ); 
+const mainRingTexture= textureLoader.load('../textures/saturnringcolor.jpg')
+const mainRingMaterial = new THREE.MeshBasicMaterial( { map: mainRingTexture, } ); 
+const mainRing = new THREE.Mesh( mainRingGeometry, mainRingMaterial );
+ scene.add( mainRing );
 //ambient light
-const ambientlight = new THREE.AmbientLight(0xffffff, 0.8);
+const ambientlight = new THREE.AmbientLight(0xffffff, 0.2);
 scene.add(ambientlight);
 
 //point Light
@@ -204,23 +205,20 @@ const radiansPerSecond =
 
 const tick = () => {
   // spacebackground rotation
-  //   spaceMesh.rotation.y += 0.00002;
+//   spaceMesh.rotation.y += 0.00002;
 
   // saturn rotation
   const elapsedTime = clock.getElapsedTime();
-  //   mesh.rotation.y += radiansPerSecond * elapsedTime;
+//   mesh.rotation.y += radiansPerSecond * elapsedTime;
 
   // Rings rotations*******************************
-
   ringParticles.rotation.x = saturnTilt;
   smallRingParticles.rotation.x = saturnTilt;
-  mainRing.rotation.x = 90;
-
-  // mainRing.rotation.x = 0;
+  mainRing.rotation.x= saturnTilt;
   // Rotations outer ring
-  //   ringParticles.rotation.y += 0.0002;
+//   ringParticles.rotation.y += 0.0002;
   // Rotation inner ring
-  //   smallRingParticles.rotation.y += 0.0002;
+//   smallRingParticles.rotation.y += 0.0002;
 
   // Update controls
   controls.update();
