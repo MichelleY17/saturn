@@ -141,9 +141,7 @@ const titanDistance = 12.21850; //scaled
 const titanTexture= textureLoader.load('../textures/Titan.png')
 const titanGeometry = new THREE.IcosahedronGeometry(titanRadius,12); 
 const titanMaterial = new THREE.MeshBasicMaterial({ map: titanTexture }); 
-// color: 0xffcc99
 const titanMesh = new THREE.Mesh(titanGeometry, titanMaterial);
-// const distanceTitan = titanMesh.position.distanceTo(saturnMesh.position); 
 scene.add(titanMesh);
 // Dione
 // diameter=1123 km
@@ -157,7 +155,6 @@ const dioneTexture= textureLoader.load('../textures/Dione.jpg')
 const dioneGeometry = new THREE.IcosahedronGeometry(dioneRadius,12); 
 const dioneMaterial = new THREE.MeshBasicMaterial({ map: dioneTexture }); 
 const dioneMesh = new THREE.Mesh(dioneGeometry, dioneMaterial);
-
 scene.add(dioneMesh);
 // Rhea
 // diameter=1527 km
@@ -165,7 +162,7 @@ scene.add(dioneMesh);
 // radius=763.5km
 // orbital period=4.52 days
 // rhea's tilt=0degrees;
-const rheaRadius= 0.007635; //scaled
+const rheaRadius= 0.07635; //scaled
 const rheaDistance = 5.27040 ;
 const rheaTexture= textureLoader.load('../textures/rhea4kalb.jpg')
 const rheaGeometry = new THREE.IcosahedronGeometry(rheaRadius,12); 
@@ -178,14 +175,62 @@ const rheaMesh = new THREE.Mesh(rheaGeometry, rheaMaterial);
 // orbital period=79.33days
 // orbital days in ours=
 // iapetus's tilt=15.47 degrees;
-const iapetusRadius= 0.00735; //scaled
+const iapetusRadius= 0.0735; //scaled
 const iapetusDistance = 3.561300;
 const iapetusTexture= textureLoader.load('../textures/iapetus4kalb.jpg')
 const iapetusGeometry = new THREE.IcosahedronGeometry(iapetusRadius,12); 
 const iapetusMaterial = new THREE.MeshBasicMaterial({ map: iapetusTexture }); 
 const iapetusMesh = new THREE.Mesh(iapetusGeometry, iapetusMaterial);
-
-scene.add(rheaMesh);
+// Mimas
+// diameter=	396 km
+// distance from Saturn= 185,520	km
+// radius=735km
+// orbital period= 0.94 days
+// mimas's tilt=1.5 degrees;
+const mimasRadius= 0.0396; //scaled
+const mimasDistance = 1.85520;
+const mimasTexture= textureLoader.load('../textures/mimas_jpl_colorify_2k.png')
+const mimasGeometry = new THREE.IcosahedronGeometry(mimasRadius,12); 
+const mimasMaterial = new THREE.MeshBasicMaterial({ map: mimasTexture }); 
+const mimasMesh = new THREE.Mesh(mimasGeometry, mimasMaterial);
+scene.add(mimasMesh);
+// Enceladus
+// diameter=	504 km
+// distance from Saturn= 238,020 km
+// radius= 252km
+// orbital period=1.37 days
+const enceladusRadius= 0.0252; //scaled
+const enceladusDistance = 2.38020;
+const enceladusTexture= textureLoader.load('../textures/Enceladus.png')
+const enceladusGeometry = new THREE.IcosahedronGeometry(enceladusRadius,12); 
+const enceladusMaterial = new THREE.MeshBasicMaterial({ map: enceladusTexture }); 
+const enceladusMesh = new THREE.Mesh(enceladusGeometry, enceladusMaterial);
+scene.add(enceladusMesh);
+// TETHYS
+// diameter=	1062 km
+// distance from Saturn= 294,660 km
+// radius= 531km
+// orbital period= 1.89 days
+const tethysRadius= 0.0531; //scaled
+const tethysDistance = 2.94660;
+const tethysTexture= textureLoader.load('../textures/tethys4kalb.jpg')
+const tethysGeometry = new THREE.IcosahedronGeometry(tethysRadius,12); 
+const tethysMaterial = new THREE.MeshBasicMaterial({ map: tethysTexture }); 
+const tethysMesh = new THREE.Mesh(tethysGeometry, tethysMaterial);
+scene.add(tethysMesh);
+// Hyperion
+// distance from Saturn= 1,481,100 km
+// radius= 266km 
+//width= 360km
+// orbital period= 21.28 days
+const hyperionRadius= 0.0266; //scale
+const hyperionWidth= 0.036 //scale
+const hyperionDistance = 1.481100;
+const hyperionTexture= textureLoader.load('../textures/hyperion.jpg')
+const hyperionGeometry = new THREE.CapsuleGeometry(hyperionRadius, hyperionWidth, 1, 7); 
+const hyperionMaterial = new THREE.MeshBasicMaterial({ map: hyperionTexture }); 
+const hyperionMesh = new THREE.Mesh(hyperionGeometry, hyperionMaterial);
+scene.add(hyperionMesh);
 
 //  Sizes
 const sizes = {
@@ -299,6 +344,31 @@ scene.add(iapetusOrbitGroup);
 iapetusOrbitGroup.add(iapetusMesh);
 // Positions IAPETUS
 iapetusMesh.position.set(iapetusDistance, 0, 0); 
+//  MINAS////////////////////////////////////////////////////////////////
+const mimasOrbitGroup = new THREE.Group();
+scene.add(mimasOrbitGroup);
+mimasOrbitGroup.add(mimasMesh);
+// Positions MIMAS
+mimasMesh.position.set(mimasDistance, 0, 0); 
+//  ENCELADUS////////////////////////////////////////////////////////////////
+const enceladusOrbitGroup = new THREE.Group();
+scene.add(enceladusOrbitGroup);
+enceladusOrbitGroup.add(enceladusMesh);
+// Positions ENCELADUS
+enceladusMesh.position.set(enceladusDistance, 0, 0); 
+//  TETHYS////////////////////////////////////////////////////////////////
+const tethysOrbitGroup = new THREE.Group();
+scene.add(tethysOrbitGroup);
+tethysOrbitGroup.add(tethysMesh);
+// Positions TETHYS
+tethysMesh.position.set(tethysDistance, 0, 0); 
+//  HYPERION////////////////////////////////////////////////////////////////
+const hyperionOrbitGroup = new THREE.Group();
+scene.add(hyperionOrbitGroup);
+hyperionOrbitGroup.add(hyperionMesh);
+// Positions HYPERION
+hyperionMesh.position.set(hyperionDistance, 0, 0); 
+
 const tick = () => {
   // spacebackground rotation
   spaceMesh.rotation.y += 0.00002;
@@ -319,11 +389,11 @@ const tick = () => {
 
   // TITAN//////////////////////////////////////////////////
   // TITAN's  rotation tilt and tilt
-  const titanRotation = 1378080;
-  const  titanScaleRotation = titanRotation /  10000000000;
   titanMesh.rotation.z += THREE.MathUtils.degToRad(0.3);
   titanOrbitGroup.rotation.x = degToRad(90)+ saturnTilt;
-  titanOrbitGroup.rotation.y += 0.0002;
+  const titanRotation = 1378080;
+  const  titanScaleRotation = titanRotation /  10000000000;
+  titanOrbitGroup.rotation.y += titanScaleRotation;
   // DIONE//////////////////////////////////////////////////////
   const dioneRotation = 2369952
   const dioneScaledRotation= dioneRotation /  10000000000;
@@ -338,11 +408,31 @@ const tick = () => {
   // IAPETUS//////////////////////////////////////////////////////////
   const iapetusRotation=  6854112 //in seconds;
   const iapetusScaledRotation= iapetusRotation /  10000000000;
-  // 79.33 days*24hours*60min*60sec
    const iapetusTilt = degToRad(15.47)
-  iapetusOrbitGroup.rotation.x = degToRad(90)+ iapetusTilt;
+  iapetusOrbitGroup.rotation.x = degToRad(90) + iapetusTilt;
   iapetusOrbitGroup.rotation.y += iapetusScaledRotation;
-  // 
+  // MIMAS/////////////////////////////////////////////////////////////////
+  const mimasRotation=  81216 //in seconds;
+  const mimasScaleRotation= mimasRotation / 100000000;
+  const mimasTilt = degToRad(1.5);
+  mimasOrbitGroup.rotation.x = degToRad(90)+ mimasTilt;
+  mimasOrbitGroup.rotation.y += mimasScaleRotation  ;
+    // ENCELADUS/////////////////////////////////////////////////////////////////
+    const enceladusRotation=  118368//in seconds;
+    const enceladusScaleRotation = enceladusRotation / 100000000;
+    enceladusOrbitGroup.rotation.x = saturnTilt;
+    enceladusOrbitGroup.rotation.y += enceladusScaleRotation ;
+    // TETHYS/////////////////////////////////////////////////////////////////
+    const tethysRotation=  163296//in seconds;
+    const tethysScaleRotation = tethysRotation / 100000000;
+    tethysOrbitGroup.rotation.x = saturnTilt;
+    tethysOrbitGroup.rotation.y += tethysScaleRotation ;
+     // Hyperion/////////////////////////////////////////////////////////////////
+    const hyperionRotation=  1838592//in seconds;
+    const hyperionScaleRotation = hyperionRotation / 100000000;
+    // hyperionMesh.rotation.z += THREE.MathUtils.degToRad(40);
+    hyperionOrbitGroup.rotation.x = saturnTilt;
+    hyperionOrbitGroup.rotation.y += hyperionScaleRotation ;
   // Update controls
   controls.update();
 
