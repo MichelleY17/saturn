@@ -456,7 +456,7 @@ scene.add(ambientlight);
 // Sun's radius= 696350000km
 const sunRadius= 0.2;
 const sphereLight = new THREE.IcosahedronGeometry( sunRadius, 12);
-const sun = new THREE.PointLight( '#fcf3db', 1000, 0, 2 );
+const sun = new THREE.PointLight( '#fcf3db', 5000, 0, 2 );
 sun.castShadow = true;
 sun.add( new THREE.Mesh( sphereLight, new THREE.MeshBasicMaterial( { color: '#fcf3db' } ) ) );
 scene.add(sun);
