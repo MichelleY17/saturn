@@ -3,9 +3,12 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 // import { FlyControls } from "three/examples/jsm/controls/FlyControls.js";
 // import { degrees } from "three/examples/jsm/nodes/Nodes.js";
 import { degToRad } from "three/src/math/MathUtils.js";
+// import GUI from 'lil-gui';
 /**
  * Base
  */
+// Debug
+// const gui = new GUI()
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -20,13 +23,15 @@ const textureLoader = new THREE.TextureLoader();
 
 
 // Space Background
-const spaceTexture = textureLoader.load("../textures/starmap_2020_4k.jpeg");
-const spaceGeometry = new THREE.SphereGeometry(150, 64, 64);
+// const spaceTexture = textureLoader.load("../textures/starmap_2020_4k.jpeg");
+const spaceGeometry = new THREE.SphereGeometry(83, 64, 64);
 const spaceMaterial = new THREE.MeshStandardMaterial({
-  map: spaceTexture,
-  //   color: 0xffffff,
+  // map: spaceTexture,
+  color: 0x0000,
   side: THREE.BackSide,
   //   wireframe: true,
+  // transparent: true,
+  // opacity: 0.5,
 });
 const spaceMesh = new THREE.Mesh(spaceGeometry, spaceMaterial);
 scene.add(spaceMesh);
@@ -56,6 +61,8 @@ scene.add(saturnMesh);
 // Ring's total diameter: 275.000 km
 // Ring's outer radius: 137.500 km
 // Ring's inner radius: 127.500 km
+// const ringInnerRadius = 1.275;
+// const ringOuterRadius = 1.375;
 const ringInnerRadius = 1.275;
 const ringOuterRadius = 1.375;
 const ringThickness = 0.02; //is my custom thickness
@@ -296,11 +303,54 @@ const hyperionMaterial = new THREE.MeshPhysicalMaterial({
 }); 
 const hyperionMesh = new THREE.Mesh(hyperionGeometry, hyperionMaterial);
 scene.add(hyperionMesh);
+// addition of solar system for detail
+// URANUS
+const uranusTexture = textureLoader.load("../textures/uranusmap.jpg");
+const uranusRadius = 0.8; 
+const uranusGeometry = new THREE.IcosahedronGeometry(uranusRadius, 12);
+const uranusMaterial = new THREE.MeshPhysicalMaterial({
+    roughness:1, 
+    metalness:0.01,
+    map: uranusTexture ,
+    clearcoat: 1.0,
+    clearcoatRoughness: 0.4 ,
+    });
+const uranusMesh = new THREE.Mesh(uranusGeometry, uranusMaterial);
+scene.add(uranusMesh);
+const uranusCustomDistance= 25;
+uranusMesh.position.set(uranusCustomDistance, -1, -2);
+// Big outer Uranu's ring
+// URANUS RINGS
+const uranusRingGeometry = new THREE.TorusGeometry(2, 0.02, 2, 100); 
+const uranusRingMaterial = new THREE.MeshPhysicalMaterial({
+    color: 'ffffff' ,
+    side: THREE.DoubleSide, 
+    roughness: 0.01,
+    metalness: 0.01,
+    opacity: 0.2,
+    transparent: true,
+});
+const uranusRing = new THREE.Mesh(uranusRingGeometry, uranusRingMaterial);
+scene.add(uranusRing);
+uranusRing.position.set(uranusCustomDistance, -1, -2); 
+// NEPTUNE
+const neptuneTexture = textureLoader.load("../textures/neptunemap.jpg");
+const neptuneRadius = 0.5; 
+const neptuneGeometry = new THREE.IcosahedronGeometry(neptuneRadius, 12);
+const neptuneMaterial = new THREE.MeshPhysicalMaterial({
+    roughness:1, 
+    metalness:0.01,
+    map: neptuneTexture ,
+    clearcoat: 1.0,
+    clearcoatRoughness: 0.4 ,
+    });
+const neptuneMesh = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
+scene.add(neptuneMesh);
+const neptuneCustomDistance= 30;
+neptuneMesh.position.set(neptuneCustomDistance, 2, 5);
 // Jupiter
-// distance from the sun = 778,500,000 kilometers
-// radius = 71,492 km
 const jupiterTexture = textureLoader.load("../textures/8k_jupiter.jpg");
-const jupiterRadius = 0.71492; // Saturn radius scaled
+const jupiterRadius = 5; // Saturn radius scaled
 const jupiterGeometry = new THREE.IcosahedronGeometry(jupiterRadius, 12);
 const jupiterMaterial = new THREE.MeshPhysicalMaterial({
     roughness:1, 
@@ -311,6 +361,68 @@ const jupiterMaterial = new THREE.MeshPhysicalMaterial({
     });
 const jupiterMesh = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
 scene.add(jupiterMesh);
+const jupiterCustomDistance= -30;
+jupiterMesh.position.set(jupiterCustomDistance, 0, 20);
+// MARS
+const marsTexture = textureLoader.load("../textures/mars_1k_color.jpg");
+const marsRadius = .7; // Saturn radius scaled
+const marsGeometry = new THREE.IcosahedronGeometry(marsRadius, 12);
+const marsMaterial = new THREE.MeshPhysicalMaterial({
+    roughness:1, 
+    metalness:0.01,
+    map: marsTexture ,
+    clearcoat: 1.0,
+    clearcoatRoughness: 0.4 ,
+    });
+const marsMesh = new THREE.Mesh(marsGeometry, marsMaterial);
+scene.add(marsMesh);
+const marsCustomDistance= -40;
+marsMesh.position.set(marsCustomDistance, -2, -20);
+// EARTH
+const earthTexture = textureLoader.load("../textures/earthmap1k.jpg");
+const earthRadius = 1.5; // Saturn radius scaled
+const earthGeometry = new THREE.IcosahedronGeometry(earthRadius, 12);
+const earthMaterial = new THREE.MeshPhysicalMaterial({
+    roughness:1, 
+    metalness:0.01,
+    map: earthTexture ,
+    clearcoat: 1.0,
+    clearcoatRoughness: 0.4 ,
+    });
+const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+scene.add(earthMesh);
+const earthCustomDistance= -55;
+earthMesh.position.set(earthCustomDistance, 10, -10);
+// VENUS
+const venusTexture = textureLoader.load("../textures/venusmap.jpg");
+const venusRadius = 1.5; 
+const venusGeometry = new THREE.IcosahedronGeometry(venusRadius, 12);
+const venusMaterial = new THREE.MeshPhysicalMaterial({
+    roughness:1, 
+    metalness:0.01,
+    map: venusTexture ,
+    clearcoat: 1.0,
+    clearcoatRoughness: 0.4 ,
+    });    
+const venusMesh = new THREE.Mesh(venusGeometry, venusMaterial);
+scene.add(venusMesh);
+const venusCustomDistance= -73;
+venusMesh.position.set(venusCustomDistance, -10, 10);
+// MERCURY
+const mercuryTexture = textureLoader.load("../textures/mercurymap.jpg");
+const mercuryRadius = 0.1; // Saturn radius scaled
+const mercuryGeometry = new THREE.IcosahedronGeometry(mercuryRadius, 12);
+const mercuryMaterial = new THREE.MeshPhysicalMaterial({
+    roughness:1, 
+    metalness:0.01,
+    map: mercuryTexture ,
+    clearcoat: 1.0,
+    clearcoatRoughness: 0.4 ,
+    });
+const mercuryMesh = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
+scene.add(mercuryMesh);
+const mercuryCustomDistance= -70;
+mercuryMesh.position.set(mercuryCustomDistance, 10, 0);
 //  Sizes
 const sizes = {
   width: window.innerWidth,
@@ -339,21 +451,16 @@ window.addEventListener("dblclick", () => {
 //ambient light
 const ambientlight = new THREE.AmbientLight(0xffffff, 0.0005);
 scene.add(ambientlight);
-// particles particular light
-const particleLight = new THREE.PointLight(0xffffff, 1); // Adjust intensity as needed
-particleLight.position.x= - 26; // Place near the particles
-particleLight.castShadow = true;
-scene.add(particleLight);
 // SUN
 // Sun's diameter = 1.3927 million km
 // Sun's radius= 696350000km
-const sunRadius= 0.69635;
+const sunRadius= 0.2;
 const sphereLight = new THREE.IcosahedronGeometry( sunRadius, 12);
-const sun = new THREE.PointLight( '#fcf3db', 10000 );
+const sun = new THREE.PointLight( '#fcf3db', 1000, 0, 2 );
 sun.castShadow = true;
 sun.add( new THREE.Mesh( sphereLight, new THREE.MeshBasicMaterial( { color: '#fcf3db' } ) ) );
-
 scene.add(sun);
+// gui.add(sun, 'intensity').min(0).max(3).step(0.001);
 
 // Camara
 // Base camera
@@ -439,20 +546,15 @@ scene.add(hyperionOrbitGroup);
 hyperionOrbitGroup.add(hyperionMesh);
 // Positions HYPERION
 hyperionMesh.position.set(hyperionDistance, 0, 0); 
-// Position Jupiter
-// distance jupiter from the sun= 778,500,000 km
-//  hypotetical distance between Jupiter and Saturn = 655,500,000 km
-const jupiterCustomDistance= -65.5500000;
-jupiterMesh.position.x = jupiterCustomDistance;
-// jupiterMesh.position.y = 10;
+
 // light position/////////////////////////////////////////////////////
-// saturn's distance from the sun  1,434,000,000 kilometers
-const sunCustomDistance= -143.4;
-sun.position.set(sunCustomDistance, 10, 0);
+const sunCustomDistance= -78;
+sun.position.set(sunCustomDistance, 0, -10);
+
 
 const tick = () => {
   // spacebackground rotation
-  // spaceMesh.rotation.y += 0.00002;
+  spaceMesh.rotation.y += 0.00002;
   // saturn rotation
   const elapsedTime = clock.getElapsedTime();
   saturnMesh.rotation.y += radiansPerSecond * elapsedTime;
@@ -467,7 +569,6 @@ const tick = () => {
   smallInnerRing.rotation.z += 0.0002;
   bigOuterRing.rotation.x = degToRad(90) + saturnTilt;
   bigOuterRing.rotation.z += 0.0002;
-  
   // TITAN//////////////////////////////////////////////////
   titanMesh.rotation.z += THREE.MathUtils.degToRad(0.3);
   titanOrbitGroup.rotation.x = degToRad(90)+ saturnTilt;
@@ -513,8 +614,13 @@ const tick = () => {
   hyperionMesh.rotation.x += 0.002;
   hyperionOrbitGroup.rotation.x = saturnTilt;
   hyperionOrbitGroup.rotation.y += hyperionScaleRotation ;
-  // Jupiter
-  // jupiterMesh.rotation.y += 0.002;
+  // rotation soe planets
+  jupiterMesh.rotation.y += 0.0002;
+  earthMesh.rotation.y += 0.0002;
+
+  // SUN
+  sun.rotation.x = 78;
+  sun.position.z += 0.00002;
   // Update controls
   controls.update();
 
