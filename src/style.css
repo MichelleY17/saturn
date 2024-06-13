@@ -79,6 +79,7 @@ body{
   }
  .descriptions p{
   font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 10px;
  } 
 .close-button{
