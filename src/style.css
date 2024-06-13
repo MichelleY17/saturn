@@ -53,10 +53,14 @@ body{
     box-shadow: 0.7rem 0.7rem rgba(0, 0, 0, 0.442);
     border: 1px solid rgba(0, 0, 0, 0.442);
   }
-  
+  .info-card .powered {
+    font-size: 10px;
+    color:var(--background-color-1);
+  }
   .info-card h2 {
     font-size: 30px;
     text-align: center;
+    padding-bottom: 3px;
   }
   
   .info-card img {

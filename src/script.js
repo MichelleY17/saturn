@@ -528,6 +528,7 @@ function showInfoCard(info) {
   const card = document.createElement("div");
   card.classList.add("info-card");
   card.innerHTML += `
+    <h5 class="powered">Powered by Michelle Yanez</h5>
     <h2>${info.name}</h2>
     <img src="${info.image}" alt="${info.name}">
     <div class="diameter">
