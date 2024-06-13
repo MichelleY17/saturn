@@ -1,12 +1,178 @@
 export const objectData = {
-    saturnMesh: {
-      name: 'Saturn',
-      image: '../textures/8k_saturn.jpg',
-      description: 'Saturn is the sixth planet from the Sun and the second-largest in the Solar System, after Jupiter. It is a gas giant with an average radius of about nine and a half times that of Earth.',
-    },
-    titanMesh: {
-      name: 'Titan',
-      image: '../textures/Titan.png',
-      description: 'Titan is the largest moon of Saturn and the second-largest natural satellite in the Solar System.',
-    },
-  };
+  mercuryMesh: {
+    name: "Mercury",
+    image: "../textures/mercury.jpg",
+    diameter: "4879km",
+    distance: "57,910,000 km",
+    orbitalPeriod: "88 days",
+    axialTilt: "0.034°",
+    rotationPeriod: "1407.6 h",
+    description:
+      "Named after the Roman god of trade and travel, Mercury is the smallest planet, closest to the Sun, with a composition of iron and rock and a temperature of 430 degrees Celsius. ",
+  },
+  venusMesh: {
+    name: "Venus",
+    image: "../textures/venus.jpg",
+    diameter: "12104km",
+    distance: "108200000 km",
+    orbitalPeriod: "224.7 days",
+    axialTilt: "2.64°",
+    rotationPeriod: "243 days",
+    description:
+      "Named after the Roman goddess of love and beauty, Venus is the second planet of the solar system, composed of iron and a thick CO2 atmosphere, it's the hottest planet due to greenhouse effect with an average temperature of 464°C. ",
+  },
+  earthMesh: {
+    name: "Earth",
+    image: "../textures/earth.jpg",
+    diameter: "12756km",
+    distance: "149600000 km",
+    orbitalPeriod: "365.26 days",
+    axialTilt: "	23.5°",
+    rotationPeriod: "24h",
+    description:
+      "Earth, our life-giving planet, stands as a testament to the delicate balance of elements necessary for existence. While not named after a deity, it is the cradle of all known life, deserving of our reverence and protection.",
+  },
+  marsMesh: {
+    name: "Mars",
+    image: "../textures/mars.png",
+    diameter: "6792km",
+    distance: "227940000 km",
+    orbitalPeriod: "687 days",
+    axialTilt: "25.19°",
+    rotationPeriod: "24.6h",
+    description:
+      "Named after the Roman god of war, also called the Red Planet, is the fourth planet from the Sun is a rocky world with a distinctive reddish hue due to iron oxide (rust) in its soil and atmosphere.",
+  },
+  jupiterMesh: {
+    name: "Jupiter",
+    image: "../textures/jupiter.jpg",
+    diameter: "4879 km",
+    distance: "778330000 km",
+    orbitalPeriod: "4333 days",
+    axialTilt: "3.13°",
+    rotationPeriod: "9.93h",
+    description:
+      "Jupiter, named after the Roman king of the gods, is the fifth and largest planet in our solar system. This colossal gas giant, composed primarily of hydrogen and helium, boasts a bone-chilling average temperature of -145°C (-234°F). Its turbulent atmosphere is a chaotic maelstrom, infamous for its swirling storms, including the iconic Great Red Spot.",
+  },
+  saturnMesh: {
+    name: "Saturn",
+    image: "../textures/saturnplanet.jpg",
+    diameter: "120536 km",
+    distance: "1426666422 km",
+    orbitalPeriod: "10759 days",
+    axialTilt: "26.73°",
+    rotationPeriod: "10.66 h",
+    description:
+      "Saturn, the second-largest planet in our solar system and the focus of our simulation, is named after the Roman god of agriculture. This majestic gas giant, primarily composed of hydrogen and helium, is encircled by a mesmerizing system of rings — an intricate dance of countless icy fragments and particles. These rings exhibit a wide range of orbital speeds, with an average rotation period of around 10 hours. Its average temperature is a frigid -178°C.",
+  },
+  titanMesh: {
+    name: "Titan",
+    image: "../textures/titan.jpg",
+    diameter: "5149 km",
+    distance: " 1,221,870km from Saturn",
+    orbitalPeriod: "15 days",
+    axialTilt: "0",
+    rotationPeriod: "15.95 days (tidally locked)",
+    description:
+      "Titan, named after Greek deities of immense strength, is the largest moon of Saturn and the only moon in our solar system with a substantial atmosphere. It is a frigid world, with an average temperature of -179°C, shrouded in an orange haze of nitrogen and methane.",
+  },
+  dioneMesh: {
+    name: "Dione",
+    image: "../textures/dionemoon.jpg",
+    diameter: "4879km",
+    distance: "377,400km from Saturn",
+    orbitalPeriod: "2.74 days",
+    axialTilt: "0",
+    rotationPeriod: "2.74 days (tidally locked)",
+    description:
+      "Primarily composed of water ice, with a possible rocky core, Dione is a bright moon named after the Greek titaness, daughter of Oceanus and Tethys. Its surface is adorned with a network of canyons and cliffs, whispering tales of past geological activity.",
+  },
+  rheaMesh: {
+    name: "Rhea",
+    image: "../textures/rheamoon.jpg",
+    diameter: "1527km",
+    distance: "5527,040km from Saturn",
+    orbitalPeriod: "4.52 days",
+    axialTilt: "0",
+    rotationPeriod: "4.52 days (tidally locked)",
+    description:
+      "Named after the Greek titaness Rhea, this icy moon is the second-largest of Saturn's entourage. Its surface, chilled to an average of -174°C, is heavily cratered and bears a network of bright wispy markings.",
+  },
+  iapetusMesh: {
+    name: "Iapetus",
+    image: "../textures/iapetusmoon.jpg",
+    diameter: "1470km",
+    distance: "3,560,820km from Saturn",
+    orbitalPeriod: "79.33 days",
+    axialTilt: "0",
+    rotationPeriod: "	79.33 days (tidally locked)",
+    description:
+      "Named after the Greek titan Iapetus, son of Uranus (sky) and Gaia (earth), this intriguing moon is a stark world of contrasts. One hemisphere is as dark as coal, coated in carbon-rich material, while the other gleams bright with water ice.",
+  },
+  mimasMesh: {
+    name: "Mimas",
+    image: "../textures/mimasmoon.jpg",
+    diameter: "396km",
+    distance: "185,520km from Saturn",
+    orbitalPeriod: "	0.94 days",
+    axialTilt: "0",
+    rotationPeriod: "0.94 days (tidally locked)",
+    description:
+      "Named after the Greek giant Mimas, this icy moon bears a striking resemblance to the Death Star from Star Wars, thanks to a colossal impact crater that dominates its surface. This heavily cratered world experiences an average temperature of -198°C.",
+  },
+  enceladusMesh: {
+    name: "Enceladus",
+    image: "../textures/enceladusmoon.jpg",
+    diameter: "504km",
+    distance: "238,020km from Saturn",
+    orbitalPeriod: "1.37 days",
+    axialTilt: "0",
+    rotationPeriod: "1.37 days (tidally locked)",
+    description:
+      "Named after the Greek giant Enceladus, son of Gaia (Earth), this icy moon is a hotbed of geological activity.  Geysers erupt from its south polar region, spewing water vapor and ice particles into space, hinting at a vast subsurface ocean that could potentially harbor life.",
+  },
+  tethysMesh: {
+    name: "Tethys",
+    image: "../textures/tethysmoon.jpg",
+    diameter: "1062km",
+    distance: "294,660km from Saturn",
+    orbitalPeriod: "1.89 days",
+    axialTilt: "0",
+    rotationPeriod: "1.89 days (tidally locked)",
+    description:
+      "Named after the Greek titaness Tethys, this icy moon features a massive impact crater called Odysseus and a vast canyon system named Ithaca Chasma. Its surface, primarily composed of water ice, experiences an average temperature of -187°C.",
+  },
+  hyperionMesh: {
+    name: "Hyperion",
+    image: "../textures/hyperionmoon.jpg",
+    diameter: "270km",
+    distance: "1,481,010km from Saturn",
+    orbitalPeriod: "21.28 days",
+    axialTilt: "Highly variable",
+    rotationPeriod: "Chaotic rotation (no fixed period)",
+    description:
+      "Named after the Greek titan Hyperion, son of Uranus (sky) and Gaia (earth), this irregularly shaped moon is a porous jumble of water ice and rock. Its unique tumbling motion, caused by its irregular shape and gravitational interactions with Titan, adds to its mysterious allure.",
+  },
+  uranusMesh: {
+    name: "Uranus",
+    image: "../textures/uranus.jpg",
+    diameter: "50,724km",
+    distance: "2.929 billion km",
+    orbitalPeriod: " 84 Earth years",
+    axialTilt: "97.77°",
+    rotationPeriod: "17h",
+    description:
+      "Named after the Greek god of the sky, Uranus is a unique ice giant that rotates on its side. Its atmosphere, composed primarily of hydrogen, helium, and traces of methane and ammonia, gives it a pale blue hue. With an average temperature of -195°C, it's a frigid world with a peculiar axial tilt.",
+  },
+  neptuneMesh: {
+    name: "Neptune",
+    image: "../textures/neptune.jpg",
+    diameter: "4879 km",
+    distance: "4.472 billion km",
+    orbitalPeriod: "164.8 Earth years",
+    axialTilt: "28°",
+    rotationPeriod: "16h",
+    description:
+      "Named after the Roman god of the sea, Neptune is a mesmerizing blue giant, the farthest known planet from the Sun. Its atmosphere is a frigid -200°C, composed primarily of hydrogen, helium, and traces of methane and ammonia, giving it its distinctive azure hue.",
+  },
+};
