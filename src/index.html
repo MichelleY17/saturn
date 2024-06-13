@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saturn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <canvas class="webgl"></canvas>
+    <div class="scene-container">
+        <canvas class="webgl"></canvas>
+        <div id="labels-container"></div> 
+        <div id="info-container">
+            <h4>Click on the planets to know more</h4>
+            <p>Powered by Michelle Yanez</p>
+        </div> 
+    </div>
     <script type="module" src="./script.js"></script>
 </body>
 </html>
