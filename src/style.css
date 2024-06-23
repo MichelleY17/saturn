@@ -31,7 +31,6 @@ body{
     width: 35%; 
     height: 90%;
     color: #fff;
-    border: 1px solid #ffffff7a;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,6 +39,7 @@ body{
   }
   #info-container .text{
     font-size: 10px;
+    padding-top: 3px;
   } 
   .info-card {
     display: flex;

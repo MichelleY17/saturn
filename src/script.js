@@ -469,10 +469,10 @@ if (!infoContainer) {
 
 const labelsContainer = document.getElementById("labels-container");
 
-// Array per memorizzare le etichette (facoltativo, ma utile per gestirle in modo più ordinato)
+// Array that memoraze the labels
 const labels = [];
 
-// Funzione per creare etichette
+// Funtion for the labels
 function createLabel(object, text) {
   const labelDiv = document.createElement("div");
   labelDiv.classList.add("label");
@@ -484,10 +484,10 @@ function createLabel(object, text) {
 
 function updateLabels() {
   for (const { object, labelDiv } of labels) {
-    const position = object.getWorldPosition(new THREE.Vector3()); // Ottieni la posizione mondiale dell'oggetto
-    const screenPosition = position.project(camera); // Proietta la posizione sullo schermo
+    const position = object.getWorldPosition(new THREE.Vector3()); // Get the object's world position
+    const screenPosition = position.project(camera); //Project the position onto the screen
 
-    // Converti in coordinate dello schermo
+    // Convert to screen coordinates
     labelDiv.style.left =
       (screenPosition.x * sizes.width) / 2 + sizes.width / 2 + "px";
     labelDiv.style.top =
